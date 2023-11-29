@@ -43,7 +43,7 @@ export class AppComponent {
   }
 
   private generateHtmlCode(): string {
-    const imageSize = this.imageForm.value.imageSize ? `width="${this.imageForm.value.imageSize}"` : '';
+    const imageSize = this.imageForm.value.imageSize ? `width: ${this.imageForm.value.imageSize}px;` : '';
     const containerStyle = this.getContainerStyle();
     const animationStyle = this.getAnimationStyle();
     return `
@@ -51,7 +51,7 @@ export class AppComponent {
       ${animationStyle}
     </style>
     <div style="${containerStyle}">
-      <img src="assets/${this.imageForm.value.image.split('\\').pop()}" style="${imageSize}" class="animated-image"/>
+      <img src="https://edaplus.info/food_pictures/pigeon.jpg" style="${imageSize}" class="animated-image"/>
     </div>
   `;
   }
@@ -90,8 +90,8 @@ export class AppComponent {
   }
 
   private getContainerStyle(): string {
-    const width = this.getStylePropertyValue('containerWidth');
-    const height = this.getStylePropertyValue('containerHeight');
+    const width = this.getStylePropertyValue('containerWidth', 'width');
+    const height = this.getStylePropertyValue('containerHeight', 'height');
     const positionX = this.getStylePropertyValue('imagePositionX', 'left');
     const positionY = this.getStylePropertyValue('imagePositionY', 'top');
     return `${width} ${height} position: relative; overflow: hidden; ${positionX} ${positionY}`;
