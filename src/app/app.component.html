@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <form [formGroup]="imageForm" (ngSubmit)="onSubmit()" class="image-form">
+    <div class="form-group">
+      <label for="image" class="image-form__label">Image:</label>
+      <input type="file" id="image" formControlName="image" class="image-form__input">
+    </div>
+
+    <div class="form-group">
+      <label for="animation" class="image-form__label">Animation:</label>
+      <select id="animation" formControlName="animation" class="image-form__select">
+        <option value="slideInFromTop">Slide In From Top</option>
+        <option value="zoomInFromBottom">Zoom In From Bottom</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="imageSize" class="image-form__label">Image Size:</label>
+      <input type="text" id="imageSize" formControlName="imageSize" class="image-form__input">
+    </div>
+
+    <div class="form-group">
+      <label for="containerWidth" class="image-form__label">Container Width:</label>
+      <input type="text" id="containerWidth" formControlName="containerWidth" class="image-form__input">
+    </div>
+
+    <div class="form-group">
+      <label for="containerHeight" class="image-form__label">Container Height:</label>
+      <input type="text" id="containerHeight" formControlName="containerHeight" class="image-form__input">
+    </div>
+
+    <div class="form-group">
+      <label for="imagePositionX" class="image-form__label">Image Position X:</label>
+      <input type="text" id="imagePositionX" formControlName="imagePositionX" class="image-form__input">
+    </div>
+
+    <div class="form-group">
+      <label for="imagePositionY" class="image-form__label">Image Position Y:</label>
+      <input type="text" id="imagePositionY" formControlName="imagePositionY" class="image-form__input">
+    </div>
+
+    <div class="button-group">
+      <button type="button" (click)="resetForm()" class="image-form__button">Reset</button>
+      <button type="button" (click)="downloadHtmlFile()" class="image-form__button">Download HTML file</button>
+      <button type="submit" class="image-form__button">Submit</button>
+    </div>
+  </form>
+
+  <div *ngIf="imageUrl && animationClass" [ngClass]="animationClass" class="animated-image">
+    <img [src]="'assets/' + imageUrl" alt="Animated Image" class="animated-image__img">
+  </div>
+</div>
